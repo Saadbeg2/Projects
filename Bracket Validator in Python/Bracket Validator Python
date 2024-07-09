@@ -1,0 +1,64 @@
+from queue import PriorityQueue
+
+def follows_bracket_order(line):
+    bracket_order = PriorityQueue()
+
+    for c in line:
+        if c in '([{':
+            bracket_order.put(c)
+        elif c in ')]}':
+            if bracket_order.empty():
+                return False
+
+            top = bracket_order.get()
+            if (c == ')' and top != '(') or (c == ']' and top != '[') or (c == '}' and top != '{'):
+                return False
+
+    return bracket_order.empty()
+
+def are_brackets_valid(line):
+    if follows_bracket_order(line):
+        bracket_stack = []
+
+        for c in line:
+            if c in '([{':
+                bracket_stack.append(c)
+            elif c in ')]}':
+                if not bracket_stack:
+                    return False
+
+                top = bracket_stack.pop()
+                if (c == ')' and top != '(') or (c == ']' and top != '[') or (c == '}' and top != '{'):
+                    return False
+
+        return not bracket_stack
+    else:
+        return False
+
+def main():
+    valid_lines = []
+    invalid_lines = []
+
+    print("Enter your input strings (type 'END' to finish):")
+    while True:
+        line = input()
+        if line == "END":
+            break
+        if line:
+            if are_brackets_valid(line):
+                valid_lines.append(line)
+            else:
+                invalid_lines.append(line)
+
+    if invalid_lines:
+        print("Invalid")
+        for invalid_line in invalid_lines:
+            print(invalid_line)
+
+    if valid_lines:
+        print("Valid")
+        for valid_line in valid_lines:
+            print(valid_line)
+
+if __name__ == "__main__":
+    main()
