@@ -1,5 +1,4 @@
-//Group 25
-//Group Assignment 1
+
 
 
 #include <algorithm>
