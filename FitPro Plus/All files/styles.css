@@ -1,0 +1,214 @@
+body {
+    background-color: #616161; /* Lighter gray */
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #074a6e; /* Blue */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    color: #fff;
+}
+
+nav {
+    background-color: #074a6e; /* Blue */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #086994; /* Lighter blue */
+    border-radius: 5px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+section {
+    margin: 20px 0;
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    background-color: #444;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #074a6e; /* Blue */
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #086994; /* Lighter blue */
+}
+
+.hidden {
+    display: none;
+}
+
+.day-header {
+    color: #00bfff; /* Light blue */
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Additional styles for the library page */
+#body-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#body-image {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+.pointer {
+    position: absolute;
+    cursor: pointer;
+}
+
+.pointer .label {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pointer .label:hover {
+    background-color: #00bfff; /* Light blue */
+    color: #000;
+}
+
+#details img {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    display: block;
+}
+
+
+/* Button styling */
+.butt {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #074a6e; /* Blue */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.butt:hover {
+    background-color: #086994; /* Lighter blue */
+}
+
+/* General styles remain unchanged */
+
+#about {
+    padding: 20px;
+    background-color: #444;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#about h2 {
+    color: #00bfff; /* Light blue */
+    margin-bottom: 20px;
+}
+
+.intro {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.description {
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.conclusion {
+    font-size: 1.1em;
+    margin-top: 20px;
+    color: #fff;
+}

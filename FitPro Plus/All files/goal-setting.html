@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPlan Pro - Set Your Goals</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>FitPlan Pro</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="goal-setting.html">Set Goals</a></li>
+                <li><a href="library.html">Library</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="goal-input">
+            <h2>Set Your Fitness Goals</h2>
+            <form id="goal-form" onsubmit="generateWorkoutPlan(event)">
+                <div class="form-group">
+                    <label for="goal">Fitness Goal:</label>
+                    <select id="goal" name="goal" required>
+                        <option value="" disabled selected>Select your goal</option>
+                        <option value="muscle_gain">Muscle Gain</option>
+                        <option value="weight_loss">Weight Loss</option>
+                        <option value="endurance">Endurance</option>
+                        <option value="flexibility">Flexibility</option>
+                        <option value="general_fitness">General Fitness</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="frequency">Workout Frequency (days per week):</label>
+                    <select id="frequency" name="frequency" required>
+                        <option value="" disabled selected>Select frequency</option>
+                        <option value="3">3 days</option>
+                        <option value="4">4 days</option>
+                        <option value="5">5 days</option>
+                        <option value="6">6 days</option>
+                    </select>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <section id="workout-plan" class="hidden">
+            <h2>Your Workout Plan</h2>
+            <div id="plan-details"></div>
+            <button onclick="goBack()">Back</button>
+        </section>
+    </main>
+    <script>
+        function generateWorkoutPlan(event) {
+            event.preventDefault();
+            
+            const goal = document.getElementById('goal').value;
+            const frequency = document.getElementById('frequency').value;
+            const planDetails = document.getElementById('plan-details');
+            
+            let plan = '';
+
+            if (goal === 'muscle_gain') {
+    plan += '<h3>Muscle Gain Plan</h3>';
+    if (frequency == '3') {
+        plan += `
+            <h4 class="day-header">Day 1: Push (Chest, Shoulders, Triceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio (jogging, jumping jacks, etc.)</li>
+                <li>Dynamic stretches for shoulders and chest</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Bench Press: 4 sets of 8-10 reps</li>
+                <li>Incline Dumbbell Press: 3 sets of 10-12 reps</li>
+                <li>Overhead Shoulder Press: 4 sets of 8-10 reps</li>
+                <li>Side Lateral Raises: 3 sets of 12-15 reps</li>
+                <li>Tricep Dips: 3 sets to failure</li>
+                <li>Tricep Pushdowns: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 2: Rest</h4>
+            <hr>
+            <h4 class="day-header">Day 3: Pull (Back, Biceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the back and biceps</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Deadlift: 4 sets of 6-8 reps</li>
+                <li>Pull-Ups: 3 sets to failure</li>
+                <li>Bent Over Rows: 4 sets of 8-10 reps</li>
+                <li>Single-Arm Dumbbell Rows: 3 sets of 10-12 reps per arm</li>
+                <li>Face Pulls: 3 sets of 12-15 reps</li>
+                <li>Barbell Bicep Curls: 3 sets of 10-12 reps</li>
+                <li>Hammer Curls: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 4: Rest</h4>
+            <hr>
+            <h4 class="day-header">Day 5: Legs and Core</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the legs and hips</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 4 sets of 8-10 reps</li>
+                <li>Leg Press: 3 sets of 10-12 reps</li>
+                <li>Romanian Deadlifts: 4 sets of 8-10 reps</li>
+                <li>Leg Curls: 3 sets of 12-15 reps</li>
+                <li>Calf Raises: 4 sets of 15-20 reps</li>
+                <li>Planks: 3 sets of 1-minute hold</li>
+                <li>Hanging Leg Raises: 3 sets of 10-12 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 6: Rest</h4>
+            <hr>
+            <h4 class="day-header">Day 7: Cardio (Optional)</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+        `;
+    } else if (frequency == '4') {
+        plan += `
+            <h4 class="day-header">Day 1: Push (Chest, Shoulders, Triceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio (jogging, jumping jacks, etc.)</li>
+                <li>Dynamic stretches for shoulders and chest</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Bench Press: 4 sets of 8-10 reps</li>
+                <li>Incline Dumbbell Press: 3 sets of 10-12 reps</li>
+                <li>Overhead Shoulder Press: 4 sets of 8-10 reps</li>
+                <li>Side Lateral Raises: 3 sets of 12-15 reps</li>
+                <li>Tricep Dips: 3 sets to failure</li>
+                <li>Tricep Pushdowns: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 2: Pull (Back, Biceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the back and biceps</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Deadlift: 4 sets of 6-8 reps</li>
+                <li>Pull-Ups: 3 sets to failure</li>
+                <li>Bent Over Rows: 4 sets of 8-10 reps</li>
+                <li>Single-Arm Dumbbell Rows: 3 sets of 10-12 reps per arm</li>
+                <li>Face Pulls: 3 sets of 12-15 reps</li>
+                <li>Barbell Bicep Curls: 3 sets of 10-12 reps</li>
+                <li>Hammer Curls: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 3: Rest</h4>
+            <hr>
+            <h4 class="day-header">Day 4: Legs and Core</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the legs and hips</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 4 sets of 8-10 reps</li>
+                <li>Leg Press: 3 sets of 10-12 reps</li>
+                <li>Romanian Deadlifts: 4 sets of 8-10 reps</li>
+                <li>Leg Curls: 3 sets of 12-15 reps</li>
+                <li>Calf Raises: 4 sets of 15-20 reps</li>
+                <li>Planks: 3 sets of 1-minute hold</li>
+                <li>Hanging Leg Raises: 3 sets of 10-12 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 5: Rest</h4>
+            <hr>
+            <h4 class="day-header">Day 6: Push (Chest, Shoulders, Triceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio (jogging, jumping jacks, etc.)</li>
+                <li>Dynamic stretches for shoulders and chest</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Bench Press: 4 sets of 8-10 reps</li>
+                <li>Incline Dumbbell Press: 3 sets of 10-12 reps</li>
+                <li>Overhead Shoulder Press: 4 sets of 8-10 reps</li>
+                <li>Side Lateral Raises: 3 sets of 12-15 reps</li>
+                <li>Tricep Dips: 3 sets to failure</li>
+                <li>Tricep Pushdowns: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 7: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+        `;
+    } else if (frequency == '5') {
+        plan += `
+            <h4 class="day-header">Day 1: Push (Chest, Shoulders, Triceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio (jogging, jumping jacks, etc.)</li>
+                <li>Dynamic stretches for shoulders and chest</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Bench Press: 4 sets of 8-10 reps</li>
+                <li>Incline Dumbbell Press: 3 sets of 10-12 reps</li>
+                <li>Overhead Shoulder Press: 4 sets of 8-10 reps</li>
+                <li>Side Lateral Raises: 3 sets of 12-15 reps</li>
+                <li>Tricep Dips: 3 sets to failure</li>
+                <li>Tricep Pushdowns: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 2: Pull (Back, Biceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the back and biceps</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Deadlift: 4 sets of 6-8 reps</li>
+                <li>Pull-Ups: 3 sets to failure</li>
+                <li>Bent Over Rows: 4 sets of 8-10 reps</li>
+                <li>Single-Arm Dumbbell Rows: 3 sets of 10-12 reps per arm</li>
+                <li>Face Pulls: 3 sets of 12-15 reps</li>
+                <li>Barbell Bicep Curls: 3 sets of 10-12 reps</li>
+                <li>Hammer Curls: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 3: Legs and Core</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the legs and hips</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 4 sets of 8-10 reps</li>
+                <li>Leg Press: 3 sets of 10-12 reps</li>
+                <li>Romanian Deadlifts: 4 sets of 8-10 reps</li>
+                <li>Leg Curls: 3 sets of 12-15 reps</li>
+                <li>Calf Raises: 4 sets of 15-20 reps</li>
+                <li>Planks: 3 sets of 1-minute hold</li>
+                <li>Hanging Leg Raises: 3 sets of 10-12 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 4: Rest</h4>
+
+            <h4 class="day-header">Day 5: Push (Chest, Shoulders, Triceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio (jogging, jumping jacks, etc.)</li>
+                <li>Dynamic stretches for shoulders and chest</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Bench Press: 4 sets of 8-10 reps</li>
+                <li>Incline Dumbbell Press: 3 sets of 10-12 reps</li>
+                <li>Overhead Shoulder Press: 4 sets of 8-10 reps</li>
+                <li>Side Lateral Raises: 3 sets of 12-15 reps</li>
+                <li>Tricep Dips: 3 sets to failure</li>
+                <li>Tricep Pushdowns: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 6: Pull (Back, Biceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the back and biceps</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Deadlift: 4 sets of 6-8 reps</li>
+                <li>Pull-Ups: 3 sets to failure</li>
+                <li>Bent Over Rows: 4 sets of 8-10 reps</li>
+                <li>Single-Arm Dumbbell Rows: 3 sets of 10-12 reps per arm</li>
+                <li>Face Pulls: 3 sets of 12-15 reps</li>
+                <li>Barbell Bicep Curls: 3 sets of 10-12 reps</li>
+                <li>Hammer Curls: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    } else if (frequency == '6') {
+        plan += `
+            <h4 class="day-header">Day 1: Push (Chest, Shoulders, Triceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio (jogging, jumping jacks, etc.)</li>
+                <li>Dynamic stretches for shoulders and chest</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Bench Press: 4 sets of 8-10 reps</li>
+                <li>Incline Dumbbell Press: 3 sets of 10-12 reps</li>
+                <li>Overhead Shoulder Press: 4 sets of 8-10 reps</li>
+                <li>Side Lateral Raises: 3 sets of 12-15 reps</li>
+                <li>Tricep Dips: 3 sets to failure</li>
+                <li>Tricep Pushdowns: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 2: Pull (Back, Biceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the back and biceps</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Deadlift: 4 sets of 6-8 reps</li>
+                <li>Pull-Ups: 3 sets to failure</li>
+                <li>Bent Over Rows: 4 sets of 8-10 reps</li>
+                <li>Single-Arm Dumbbell Rows: 3 sets of 10-12 reps per arm</li>
+                <li>Face Pulls: 3 sets of 12-15 reps</li>
+                <li>Barbell Bicep Curls: 3 sets of 10-12 reps</li>
+                <li>Hammer Curls: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 3: Legs and Core</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the legs and hips</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 4 sets of 8-10 reps</li>
+                <li>Leg Press: 3 sets of 10-12 reps</li>
+                <li>Romanian Deadlifts: 4 sets of 8-10 reps</li>
+                <li>Leg Curls: 3 sets of 12-15 reps</li>
+                <li>Calf Raises: 4 sets of 15-20 reps</li>
+                <li>Planks: 3 sets of 1-minute hold</li>
+                <li>Hanging Leg Raises: 3 sets of 10-12 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 4: Push (Chest, Shoulders, Triceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio (jogging, jumping jacks, etc.)</li>
+                <li>Dynamic stretches for shoulders and chest</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Bench Press: 4 sets of 8-10 reps</li>
+                <li>Incline Dumbbell Press: 3 sets of 10-12 reps</li>
+                <li>Overhead Shoulder Press: 4 sets of 8-10 reps</li>
+                <li>Side Lateral Raises: 3 sets of 12-15 reps</li>
+                <li>Tricep Dips: 3 sets to failure</li>
+                <li>Tricep Pushdowns: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 5: Pull (Back, Biceps)</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the back and biceps</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Deadlift: 4 sets of 6-8 reps</li>
+                <li>Pull-Ups: 3 sets to failure</li>
+                <li>Bent Over Rows: 4 sets of 8-10 reps</li>
+                <li>Single-Arm Dumbbell Rows: 3 sets of 10-12 reps per arm</li>
+                <li>Face Pulls: 3 sets of 12-15 reps</li>
+                <li>Barbell Bicep Curls: 3 sets of 10-12 reps</li>
+                <li>Hammer Curls: 3 sets of 12-15 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>   
+            <hr>
+            <h4 class="day-header">Day 6: Legs and Core</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches for the legs and hips</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 4 sets of 8-10 reps</li>
+                <li>Leg Press: 3 sets of 10-12 reps</li>
+                <li>Romanian Deadlifts: 4 sets of 8-10 reps</li>
+                <li>Leg Curls: 3 sets of 12-15 reps</li>
+                <li>Calf Raises: 4 sets of 15-20 reps</li>
+                <li>Planks: 3 sets of 1-minute hold</li>
+                <li>Hanging Leg Raises: 3 sets of 10-12 reps</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching for the worked muscles</li>
+            </ul>
+            <hr>
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    }
+}
+if (goal === 'weight_loss') {
+    plan += '<h3>Weight Loss Plan</h3>';
+    if (frequency == '3') {
+        plan += `
+            <h4 class="day-header">Day 1: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 3: Full Body HIIT</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Burpees: 4 sets of 20 reps</li>
+                <li>Jump Squats: 4 sets of 20 reps</li>
+                <li>Mountain Climbers: 4 sets of 30 seconds</li>
+                <li>Push-Ups: 4 sets of 15 reps</li>
+                <li>Plank: 4 sets of 1-minute hold</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 5: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 7: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+        `;
+    } else if (frequency == '4') {
+        plan += `
+            <h4 class="day-header">Day 1: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 4 sets of 15 reps</li>
+                <li>Push-Ups: 4 sets of 15 reps</li>
+                <li>Bent Over Rows: 4 sets of 15 reps</li>
+                <li>Plank: 4 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 4 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 4: HIIT</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Burpees: 4 sets of 20 reps</li>
+                <li>Jump Squats: 4 sets of 20 reps</li>
+                <li>Mountain Climbers: 4 sets of 30 seconds</li>
+                <li>Push-Ups: 4 sets of 15 reps</li>
+                <li>Plank: 4 sets of 1-minute hold</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 5: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 6: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    } else if (frequency == '5') {
+        plan += `
+            <h4 class="day-header">Day 1: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 4 sets of 15 reps</li>
+                <li>Push-Ups: 4 sets of 15 reps</li>
+                <li>Bent Over Rows: 4 sets of 15 reps</li>
+                <li>Plank: 4 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 4 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: HIIT</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Burpees: 4 sets of 20 reps</li>
+                <li>Jump Squats: 4 sets of 20 reps</li>
+                <li>Mountain Climbers: 4 sets of 30 seconds</li>
+                <li>Push-Ups: 4 sets of 15 reps</li>
+                <li>Plank: 4 sets of 1-minute hold</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 5: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 4 sets of 15 reps</li>
+                <li>Push-Ups: 4 sets of 15 reps</li>
+                <li>Bent Over Rows: 4 sets of 15 reps</li>
+                <li>Plank: 4 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 4 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    } else if (frequency == '6') {
+        plan += `
+            <h4 class="day-header">Day 1: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 4 sets of 15 reps</li>
+                <li>Push-Ups: 4 sets of 15 reps</li>
+                <li>Bent Over Rows: 4 sets of 15 reps</li>
+                <li>Plank: 4 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 4 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: HIIT</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Burpees: 4 sets of 20 reps</li>
+                <li>Jump Squats: 4 sets of 20 reps</li>
+                <li>Mountain Climbers: 4 sets of 30 seconds</li>
+                <li>Push-Ups: 4 sets of 15 reps</li>
+                <li>Plank: 4 sets of 1-minute hold</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 5: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 4 sets of 15 reps</li>
+                <li>Push-Ups: 4 sets of 15 reps</li>
+                <li>Bent Over Rows: 4 sets of 15 reps</li>
+                <li>Plank: 4 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 4 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: HIIT</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Burpees: 4 sets of 20 reps</li>
+                <li>Jump Squats: 4 sets of 20 reps</li>
+                <li>Mountain Climbers: 4 sets of 30 seconds</li>
+                <li>Push-Ups: 4 sets of 15 reps</li>
+                <li>Plank: 4 sets of 1-minute hold</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    }
+}
+else if (goal === 'endurance') {
+    plan += '<h3>Endurance Plan</h3>';
+    if (frequency == '3') {
+        plan += `
+            <h4 class="day-header">Day 1: Long Distance Run</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of steady-state running</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 3: Interval Training</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>10 minutes of light jogging</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>5 minutes of running at a fast pace</li>
+                <li>2 minutes of walking</li>
+                <li>Repeat for 30-45 minutes</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>10 minutes of walking</li>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 5: Cross Training</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of cycling, swimming, or rowing</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 7: Long Distance Run</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of steady-state running</li>
+            </ul>
+            <hr>
+        `;
+    } else if (frequency == '4') {
+        plan += `
+            <h4 class="day-header">Day 1: Long Distance Run</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of steady-state running</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Interval Training</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>10 minutes of light jogging</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>5 minutes of running at a fast pace</li>
+                <li>2 minutes of walking</li>
+                <li>Repeat for 30-45 minutes</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>10 minutes of walking</li>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 4: Cross Training</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of cycling, swimming, or rowing</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 5: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 6: Long Distance Run</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of steady-state running</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    } else if (frequency == '5') {
+        plan += `
+            <h4 class="day-header">Day 1: Long Distance Run</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of steady-state running</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Interval Training</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>10 minutes of light jogging</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>5 minutes of running at a fast pace</li>
+                <li>2 minutes of walking</li>
+                <li>Repeat for 30-45 minutes</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>10 minutes of walking</li>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: Cross Training</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of cycling, swimming, or rowing</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 5: Long Distance Run</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of steady-state running</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Interval Training</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>10 minutes of light jogging</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>5 minutes of running at a fast pace</li>
+                <li>2 minutes of walking</li>
+                <li>Repeat for 30-45 minutes</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>10 minutes of walking</li>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    } else if (frequency == '6') {
+        plan += `
+            <h4 class="day-header">Day 1: Long Distance Run</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of steady-state running</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Interval Training</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>10 minutes of light jogging</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>5 minutes of running at a fast pace</li>
+                <li>2 minutes of walking</li>
+                <li>Repeat for 30-45 minutes</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>10 minutes of walking</li>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: Cross Training</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of cycling, swimming, or rowing</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Long Distance Run</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of steady-state running</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 5: Interval Training</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>10 minutes of light jogging</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>5 minutes of running at a fast pace</li>
+                <li>2 minutes of walking</li>
+                <li>Repeat for 30-45 minutes</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>10 minutes of walking</li>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Cross Training</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45-60 minutes of cycling, swimming, or rowing</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    }
+}
+else if (goal === 'flexibility') {
+    plan += '<h3>Flexibility Plan</h3>';
+    if (frequency == '3') {
+        plan += `
+            <h4 class="day-header">Day 1: Yoga</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of yoga practice focusing on full-body flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 3: Pilates</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of Pilates focusing on core strength and flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 5: Yoga</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of yoga practice focusing on full-body flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 7: Stretching</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45 minutes of full-body stretching exercises</li>
+            </ul>
+            <hr>
+        `;
+    } else if (frequency == '4') {
+        plan += `
+            <h4 class="day-header">Day 1: Yoga</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of yoga practice focusing on full-body flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Pilates</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of Pilates focusing on core strength and flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 4: Yoga</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of yoga practice focusing on full-body flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 5: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 6: Pilates</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of Pilates focusing on core strength and flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Stretching</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45 minutes of full-body stretching exercises</li>
+            </ul>
+            <hr>
+        `;
+    } else if (frequency == '5') {
+        plan += `
+            <h4 class="day-header">Day 1: Yoga</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of yoga practice focusing on full-body flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Pilates</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of Pilates focusing on core strength and flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: Stretching</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45 minutes of full-body stretching exercises</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 5: Yoga</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of yoga practice focusing on full-body flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Pilates</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of Pilates focusing on core strength and flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Stretching</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45 minutes of full-body stretching exercises</li>
+            </ul>
+            <hr>
+        `;
+    } else if (frequency == '6') {
+        plan += `
+            <h4 class="day-header">Day 1: Yoga</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of yoga practice focusing on full-body flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Pilates</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of Pilates focusing on core strength and flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: Stretching</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45 minutes of full-body stretching exercises</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Yoga</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of yoga practice focusing on full-body flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 5: Pilates</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>60 minutes of Pilates focusing on core strength and flexibility</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Stretching</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>45 minutes of full-body stretching exercises</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    }
+}
+else if (goal === 'general_fitness') {
+    plan += '<h3>General Fitness Plan</h3>';
+    if (frequency == '3') {
+        plan += `
+            <h4 class="day-header">Day 1: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 3 sets of 12 reps</li>
+                <li>Push-Ups: 3 sets of 15 reps</li>
+                <li>Bent Over Rows: 3 sets of 12 reps</li>
+                <li>Plank: 3 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 3 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 3: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>30-45 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 5: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 3 sets of 12 reps</li>
+                <li>Push-Ups: 3 sets of 15 reps</li>
+                <li>Bent Over Rows: 3 sets of 12 reps</li>
+                <li>Plank: 3 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 3 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 7: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>30-45 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+        `;
+    } else if (frequency == '4') {
+        plan += `
+            <h4 class="day-header">Day 1: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 3 sets of 12 reps</li>
+                <li>Push-Ups: 3 sets of 15 reps</li>
+                <li>Bent Over Rows: 3 sets of 12 reps</li>
+                <li>Plank: 3 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 3 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>30-45 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 4: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 3 sets of 12 reps</li>
+                <li>Push-Ups: 3 sets of 15 reps</li>
+                <li>Bent Over Rows: 3 sets of 12 reps</li>
+                <li>Plank: 3 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 3 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 5: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 6: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>30-45 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    } else if (frequency == '5') {
+        plan += `
+            <h4 class="day-header">Day 1: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 3 sets of 12 reps</li>
+                <li>Push-Ups: 3 sets of 15 reps</li>
+                <li>Bent Over Rows: 3 sets of 12 reps</li>
+                <li>Plank: 3 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 3 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>30-45 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 4: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 3 sets of 12 reps</li>
+                <li>Push-Ups: 3 sets of 15 reps</li>
+                <li>Bent Over Rows: 3 sets of 12 reps</li>
+                <li>Plank: 3 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 3 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 5: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>30-45 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Rest</h4>
+            <hr>
+
+            <h4 class="day-header">Day 7: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 3 sets of 12 reps</li>
+                <li>Push-Ups: 3 sets of 15 reps</li>
+                <li>Bent Over Rows: 3 sets of 12 reps</li>
+                <li>Plank: 3 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 3 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+        `;
+    } else if (frequency == '6') {
+        plan += `
+            <h4 class="day-header">Day 1: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 3 sets of 12 reps</li>
+                <li>Push-Ups: 3 sets of 15 reps</li>
+                <li>Bent Over Rows: 3 sets of 12 reps</li>
+                <li>Plank: 3 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 3 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 2: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>30-45 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 3: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 3 sets of 12 reps</li>
+                <li>Push-Ups: 3 sets of 15 reps</li>
+                <li>Bent Over Rows: 3 sets of 12 reps</li>
+                <li>Plank: 3 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 3 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 4: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>30-45 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 5: Full Body Workout</h4>
+            <p><strong>Warm-Up:</strong></p>
+            <ul>
+                <li>5-10 minutes of light cardio</li>
+                <li>Dynamic stretches</li>
+            </ul>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>Squats: 3 sets of 12 reps</li>
+                <li>Push-Ups: 3 sets of 15 reps</li>
+                <li>Bent Over Rows: 3 sets of 12 reps</li>
+                <li>Plank: 3 sets of 1-minute hold</li>
+                <li>Jumping Jacks: 3 sets of 1 minute</li>
+            </ul>
+            <p><strong>Cool Down:</strong></p>
+            <ul>
+                <li>Static stretching</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 6: Cardio</h4>
+            <p><strong>Workout:</strong></p>
+            <ul>
+                <li>30-45 minutes of moderate to intense cardio (running, cycling, swimming, etc.)</li>
+            </ul>
+            <hr>
+
+            <h4 class="day-header">Day 7: Rest</h4>
+            <hr>
+        `;
+    }
+}
+            
+            planDetails.innerHTML = plan;
+
+            document.getElementById('goal-input').style.display = 'none';
+            document.getElementById('workout-plan').style.display = 'block';
+        }
+
+        function goBack() {
+            document.getElementById('workout-plan').style.display = 'none';
+            document.getElementById('goal-input').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPlan Pro - Library</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>FitPlan Pro</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="goal-setting.html">Set Goals</a></li>
+                <li><a href="library.html">Library</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="library">
+            <h2>Exercise Library</h2>
+            <div id="body-container">
+                <img src="body-image.png" alt="Human Body" id="body-image">
+                <div class="pointer" style="top: 25%; left: 47.5%;">
+                    <span class="label" onclick="showMuscleGroup('back')">Back</span>
+                </div>
+                <div class="pointer" style="top: 25%; left: 75%;">
+                    <span class="label" onclick="showMuscleGroup('biceps')">Biceps</span>
+                </div>
+                <div class="pointer" style="top: 29%; right: 75%;">
+                    <span class="label" onclick="showMuscleGroup('triceps')">Triceps</span>
+                </div>
+                <div class="pointer" style="top: 37%; left: 79%;">
+                    <span class="label" onclick="showMuscleGroup('forearms')">Forearms</span>
+                </div>
+                <div class="pointer" style="top: 20%; left: 47.5%;">
+                    <span class="label" onclick="showMuscleGroup('chest')">Chest</span>
+                </div>
+                <div class="pointer" style="top: 40%; left: 47.5%;">
+                    <span class="label" onclick="showMuscleGroup('abs')">Abs</span>
+                </div>
+                <div class="pointer" style="top: 13%; left: 61%;">
+                    <span class="label" onclick="showMuscleGroup('shoulder')">Shoulder</span>
+                </div>
+                <div class="pointer" style="top: 60%; left: 24%;">
+                    <span class="label" onclick="showMuscleGroup('thighs')">Thighs</span>
+                </div>
+                <div class="pointer" style="top: 80%; left: 26%;">
+                    <span class="label" onclick="showMuscleGroup('calves')">Calves</span>
+                </div>
+                <div class="pointer" style="top: 0%; left: -20%;">
+                    <span class="label" onclick="showMuscleGroup('cardio')">Cardio</span>
+                </div>
+                <div class="pointer" style="top: 5%; left: -20%;">
+                    <span class="label" onclick="showMuscleGroup('streching')">Streching</span>
+                </div>
+            </div>
+        </section>
+        <section id="details" class="hidden">
+            <button onclick="goBack()">Back</button>
+            <img id="detail-image" src="" alt="Muscle Detail">
+            <div id="muscle-details">
+                <!-- Detailed muscle group pointers will go here -->
+            </div>
+        </section>
+    </main>
+    <script>
+        function showMuscleGroup(muscleGroup) {
+            document.getElementById('library').style.display = 'none';
+            const detailsSection = document.getElementById('details');
+            detailsSection.style.display = 'block';
+
+            let detailImage = document.getElementById('detail-image');
+            let muscleDetails = document.getElementById('muscle-details');
+
+            switch (muscleGroup) {
+                case 'back':
+                    detailImage.src = 'back-detail.png'; // Replace with the actual image source
+                    muscleDetails.innerHTML = `
+                        <div class="pointer" style="top: 38%; left: 39%;">
+                            <span class="label">Traps</span>
+                        </div>
+                        <div class="pointer" style="top: 66%; left: 36%;">
+                            <span class="label">Deltoid</span>
+                        </div>
+                        <div class="pointer" style="top: 82%; left: 40%;">
+                            <span class="label">Lats</span>
+                        </div>
+                    `;
+                    break;
+                case 'biceps':
+                    detailImage.src = 'biceps-detail.png'; // Replace with the actual image source
+                    muscleDetails.innerHTML = `
+                        <div class="pointer" style="top: 45%; left: 53%;">
+                            <span class="label">Short Head</span>
+                        </div>
+                        <div class="pointer" style="top: 66%; left: 58%;">
+                            <span class="label">Long Head</span>
+                        </div>
+                        <div class="pointer" style="top: 86%; left: 39%;">
+                            <span class="label">Brachialis</span>
+                        </div>
+                    `;
+                    break;
+                case 'triceps':
+                    detailImage.src = 'triceps-detail.png'; // Replace with the actual image source
+                    muscleDetails.innerHTML = `
+                        <div class="pointer" style="top: 38%; left: 37%;">
+                            <span class="label">Lateral Head</span>
+                        </div>
+                        <div class="pointer" style="top: 71%; left: 32%;">
+                            <span class="label">Medial Head</span>
+                        </div>
+                        <div class="pointer" style="top: 80%; left: 55%;">
+                            <span class="label">Long Head</span>
+                        </div>
+                    `;
+                    break;
+                case 'forearms':
+                    detailImage.src = 'forearms-detail.png'; // Replace with the actual image source
+                    muscleDetails.innerHTML = `
+                        <div class="pointer" style="top: 46%; left: 47%;">
+                            <span class="label">Flexors</span>
+                        </div>
+                        <div class="pointer" style="top: 51%; left: 60%;">
+                            <span class="label">Extensors</span>
+                        </div>
+                        <div class="pointer" style="top: 63%; left: 31%;">
+                            <span class="label">Brachioradials</span>
+                        </div>
+                    `;
+                    break;
+                case 'chest':
+                    detailImage.src = 'chest-detail.png'; // Replace with the actual image source
+                    muscleDetails.innerHTML = `
+                        <div class="pointer" style="top: 38%; left: 53%;">
+                            <span class="label">Upper Chest</span>
+                        </div>
+                        <div class="pointer" style="top: 49%; left: 60%;">
+                            <span class="label">Middle Chest</span>
+                        </div>
+                        <div class="pointer" style="top: 89%; left: 62%;">
+                            <span class="label">Lower Chest</span>
+                        </div>
+                        <div class="pointer" style="top: 45%; left: 34%;">
+                            <span class="label">Pectoral Muscle</span>
+                        </div>
+                    `;
+                    break;
+                case 'abs':
+                    detailImage.src = 'abs-detail.png'; // Replace with the actual image source
+                    muscleDetails.innerHTML = `
+                        <div class="pointer" style="top: 64%; left: 30%;">
+                            <span class="label">Linea Alba</span>
+                        </div>
+                        <div class="pointer" style="top: 66%; left: 58%;">
+                            <span class="label">External Oblique</span>
+                        </div>
+                        <div class="pointer" style="top: 87%; left: 30%;">
+                            <span class="label">Aponeurotic Fibres</span>
+                        </div>
+                    `;
+                    break;
+                case 'shoulder':
+                    detailImage.src = 'shoulder-detail.png'; // Replace with the actual image source
+                    muscleDetails.innerHTML = `
+                        <div class="pointer" style="top: 58%; left: 63%;">
+                            <span class="label">Anterior Head</span>
+                        </div>
+                        <div class="pointer" style="top: 40%; left: 58%;">
+                            <span class="label">Lateral Head</span>
+                        </div>
+                        <div class="pointer" style="top: 58%; left: 30%;">
+                            <span class="label">Posterior Head</span>
+                        </div>
+                    `;
+                    break;
+                case 'thighs':
+                    detailImage.src = 'thighs-detail.png'; // Replace with the actual image source
+                    muscleDetails.innerHTML = `
+                        <div class="pointer" style="top: 73%; left: 47%;">
+                            <span class="label">Quads</span>
+                        </div>
+                        <div class="pointer" style="top: 71%; left: 65%;">
+                            <span class="label">Hamstrings</span>
+                        </div>
+                        <div class="pointer" style="top: 35%; left: 32%;">
+                            <span class="label">Glutes</span>
+                        </div>
+                        <div class="pointer" style="top: 43%; left: 47%;">
+                            <span class="label">Abductor</span>
+                        </div>
+                    `;
+                    break;
+                case 'calves':
+                    detailImage.src = 'calves-detail.png'; // Replace with the actual image source
+                    muscleDetails.innerHTML = `
+                        <div class="pointer" style="top: 68%; left: 32%;">
+                            <span class="label">Gastrocnemius</span>
+                        </div>
+                        <div class="pointer" style="top: 80%; left: 60%;">
+                            <span class="label">Soleus</span>
+                        </div>
+                    `;
+                    break;
+            }
+        }
+
+        function goBack() {
+            document.getElementById('details').style.display = 'none';
+            document.getElementById('library').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
